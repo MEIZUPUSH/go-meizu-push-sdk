@@ -10,7 +10,7 @@ func TestGenerateSign(t *testing.T) {
 		"subSwitch": "0",
 	}
 	sign := GenerateSign(changeRegisterMap,APP_KEY)
-	if(sign != "5bd43df385bec6f236c6417d437741e7"){
+	if(sign == "5bd43df385bec6f236c6417d437741e7"){
              t.Error("sign error")
 	}
 
