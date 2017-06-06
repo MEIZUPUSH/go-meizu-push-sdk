@@ -6,6 +6,7 @@ import (
 	"github.com/ddliu/go-httpclient"
 	"bytes"
 	"crypto/md5"
+	"sort"
 )
 
 
@@ -26,14 +27,25 @@ type PushResponse struct {
 func GenerateSign(params map[string]string, appKey string) string {
 	var signStr string
 	if params != nil {
-		for k, v := range params {
-			signStr += k + "=" + v
+		keys := make([]string, len(params))
+		i := 0
+		for key, _ := range params {
+			keys[i] = key
+			i++
+		}
+		sort.Strings(keys)
+		for _, k := range keys {
+			signStr += k + "=" + params[k]
 		}
 		signStr += appKey
 		fmt.Println("signStr ",signStr)
 	}
+	return PushParamMD5(signStr)
+}
+
+func PushParamMD5(paramstr string) string {
 	hasher := md5.New()
-	hasher.Write([]byte(signStr))
+	hasher.Write([]byte(paramstr))
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 

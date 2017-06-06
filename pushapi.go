@@ -6,7 +6,7 @@ import (
 
 
 
-//订阅接口
+//android 客户端订阅接口
 func Register(appId string, appKey string, deviceId string) PushResponse {
 	registerRequestMap := map[string]string{
 		"appId":    appId,
