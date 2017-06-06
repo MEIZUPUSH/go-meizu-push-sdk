@@ -1,6 +1,29 @@
 # go-meizu-push-sdk
 [![Build Status][travis-image]][travis] [![Coverage Status][coveralls-image]][coveralls]  [![License][license-image]][license]
 
+## Installation
+```
+   go get github.com/comsince/go-meizu-push-sdk
+```
+
+## QuickStart
+
+* 获取订阅开关状态
+
+```go
+func TestGetRegisterSwitch(t *testing.T) {
+	message := GetRegisterSwitch(APP_ID,PUSH_ID,APP_KEY)
+	fmt.Println("current message "+message.message)
+	if(message.code != 200){
+		t.Error("Status Code not 200")
+	}
+}
+
+```
+
+## ServerRegisterService
+
+* API 列表
 
 
 
