@@ -10,6 +10,12 @@ const (
 	changeRegisterSwitch = PUSH_API_SERVER + "/garcia/api/server/message/changeRegisterSwitch"
 	changeAllSwitch      = PUSH_API_SERVER + "/garcia/api/server/message/changeAllSwitch"
 	subscribeAlias = PUSH_API_SERVER +"/garcia/api/server/message/subscribeAlias"
+	unSubscribeAlias = PUSH_API_SERVER + "/garcia/api/server/message/unSubscribeAlias"
+	getSubAlias = PUSH_API_SERVER + "/garcia/api/server/message/getSubAlias"
+	subscribeTags = PUSH_API_SERVER + "/garcia/api/server/message/subscribeTags"
+	unSubscribeTags = PUSH_API_SERVER + "/garcia/api/server/message/unSubscribeTags"
+	getSubTags = PUSH_API_SERVER + "/garcia/api/server/message/getSubTags"
+	unSubAllTags = PUSH_API_SERVER + "/garcia/api/server/message/unSubAllTags"
 )
 
 const (
@@ -102,3 +108,97 @@ func SubscribeAlias(appId string, pushId string,alias string, appKey string) Pus
 
 	return ResolvePushResponse(res, err)
 }
+
+//取消别名订阅
+func UnSubscribeAlias(appId string, pushId string, appKey string) PushResponse  {
+	unSubscribeAliasMap := map[string]string{
+		"appId":     appId,
+		"pushId":    pushId,
+	}
+
+	sign := GenerateSign(unSubscribeAliasMap, appKey)
+	unSubscribeAliasMap["sign"] = sign
+
+	res, err := httpclient.Post(unSubscribeAlias, unSubscribeAliasMap)
+
+	return ResolvePushResponse(res, err)
+}
+
+//获取订阅别名
+func GetSubAlias(appId string, pushId string, appKey string) PushResponse  {
+	getSubAliasMap := map[string]string{
+		"appId":     appId,
+		"pushId":    pushId,
+	}
+
+	sign := GenerateSign(getSubAliasMap, appKey)
+	getSubAliasMap["sign"] = sign
+
+	res, err := httpclient.Post(getSubAlias, getSubAliasMap)
+
+	return ResolvePushResponse(res, err)
+}
+
+//标签订阅
+func SubscribeTags(appId string, pushId string, tags string, appKey string) PushResponse  {
+	subtagsMap := map[string]string{
+		"appId":     appId,
+		"pushId":    pushId,
+		"tags": tags,
+	}
+
+	sign := GenerateSign(subtagsMap, appKey)
+	subtagsMap["sign"] = sign
+
+	res, err := httpclient.Post(subscribeTags, subtagsMap)
+
+	return ResolvePushResponse(res, err)
+}
+
+//取消标签订阅
+func UnSubscribeTags(appId string, pushId string, tags string, appKey string)  PushResponse{
+	unSubtagsMap := map[string]string{
+		"appId":     appId,
+		"pushId":    pushId,
+		"tags": tags,
+	}
+
+	sign := GenerateSign(unSubtagsMap, appKey)
+	unSubtagsMap["sign"] = sign
+
+	res, err := httpclient.Post(unSubscribeTags, unSubtagsMap)
+
+	return ResolvePushResponse(res, err)
+}
+
+//获取订阅标签
+func GetSubTags(appId string, pushId string, appKey string) PushResponse {
+	getSubtagsMap := map[string]string{
+		"appId":     appId,
+		"pushId":    pushId,
+	}
+
+	sign := GenerateSign(getSubtagsMap, appKey)
+	getSubtagsMap["sign"] = sign
+
+	res, err := httpclient.Post(getSubTags, getSubtagsMap)
+
+	return ResolvePushResponse(res, err)
+}
+
+//取消订阅所有标签
+func UnSubAllTags(appId string, pushId string, appKey string)  PushResponse{
+	unSubAlltagsMap := map[string]string{
+		"appId":     appId,
+		"pushId":    pushId,
+	}
+
+	sign := GenerateSign(unSubAlltagsMap, appKey)
+	unSubAlltagsMap["sign"] = sign
+
+	res, err := httpclient.Post(unSubAllTags, unSubAlltagsMap)
+
+	return ResolvePushResponse(res, err)
+}
+
+
