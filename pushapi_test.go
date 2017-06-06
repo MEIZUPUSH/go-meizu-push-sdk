@@ -11,4 +11,9 @@ func TestRegister(t *testing.T){
 	if message.code != 200 {
 		t.Error("Status Code not 200")
 	}
+
+	failmessage := Register("100999","80355073480594a99470dcacccd8cf2c","862891030007404")
+	if(failmessage.code != 200){
+		t.Error("invalid code")
+	}
 }
