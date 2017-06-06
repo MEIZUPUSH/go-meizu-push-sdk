@@ -1,0 +1,15 @@
+language: go
+sudo: false
+go:
+  - 1.4
+  - 1.5.4
+  - 1.6.4
+  - 1.7.4
+  - tip
+
+before_script:
+  - cd server
+script:
+  - go test -v -covermode=count -coverprofile=coverage.out
+
+
