@@ -3,7 +3,7 @@
 
 ## Installation
 ```
-   go get github.com/comsince/go-meizu-push-sdk
+   go get github.com/MEIZUPUSH/go-meizu-push-sdk
 ```
 
 
@@ -86,7 +86,7 @@ func TestPushNotificationMessageByPushId(t *testing.T) {
 }
 ```
 
-**NOTE:**  详情请参考[meizu-push-godoc](https://godoc.org/github.com/comsince/go-meizu-push-sdk)
+**NOTE:**  详情请参考[meizu-push-godoc](https://godoc.org/github.com/MEIZUPUSH/go-meizu-push-sdk)
 
 
 [travis]: https://travis-ci.org/comsince/go-meizu-push-sdk
