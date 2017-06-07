@@ -4,39 +4,37 @@ import (
 	"encoding/json"
 )
 
-/**
-"noticeBarInfo": {
-        "noticeBarType": 通知栏样式(0, "标准"),(2, "安卓原生")【int 非必填，值为0】
-        "title": 推送标题, 【string 必填，字数限制1~32字符】
-        "content": 推送内容, 【string 必填，字数限制1~100字符】
-    }
-*/
+
+//"noticeBarInfo": {
+//     "noticeBarType": 通知栏样式(0, "标准"),(2, "安卓原生")【int 非必填，值为0】
+//     "title": 推送标题, 【string 必填，字数限制1~32字符】
+//     "content": 推送内容, 【string 必填，字数限制1~100字符】
+//}
 type NoticeBarInfo struct {
 	NoticeBarType int    `json:"noticeBarType"`
 	Title         string `json:"title"`
 	Content       string `json:"content"`
 }
 
-/**
-"noticeExpandInfo": {
-        "noticeExpandType": 展开方式 (0, "标准"),(1, "文本")【int 非必填，值为0、1】
-        "noticeExpandContent": 展开内容, 【string noticeExpandType为文本时，必填】
-    }
-*/
+
+//"noticeExpandInfo": {
+//        "noticeExpandType": 展开方式 (0, "标准"),(1, "文本")【int 非必填，值为0、1】
+//        "noticeExpandContent": 展开内容, 【string noticeExpandType为文本时，必填】
+//    }
+
 type NoticeExpandInfo struct {
 	NoticeExpandType    int    `json:"noticeExpandType"`
 	NoticeExpandContent string `json:"noticeExpandContent"`
 }
 
-/**
-"clickTypeInfo": {
-        "clickType": 点击动作 (0,"打开应用"),(1,"打开应用页面"),(2,"打开URI页面"),(3, "应用客户端自定义")【int 非必填,默认为0】
-        "url": URI页面地址, 【string clickType为打开URI页面时，必填, 长度限制1000字节】
-        "parameters":参数 【JSON格式】【非必填】
-        "activity":应用页面地址 【string clickType为打开应用页面时，必填, 长度限制1000字节】
-        "customAttribute":应用客户端自定义【string clickType为应用客户端自定义时，必填， 输入长度为1000字节以内】
-    }
-*/
+
+//"clickTypeInfo": {
+//        "clickType": 点击动作 (0,"打开应用"),(1,"打开应用页面"),(2,"打开URI页面"),(3, "应用客户端自定义")【int 非必填,默认为0】
+//        "url": URI页面地址, 【string clickType为打开URI页面时，必填, 长度限制1000字节】
+//        "parameters":参数 【JSON格式】【非必填】
+//        "activity":应用页面地址 【string clickType为打开应用页面时，必填, 长度限制1000字节】
+//        "customAttribute":应用客户端自定义【string clickType为应用客户端自定义时，必填， 输入长度为1000字节以内】
+//    }
 type ClickTypeInfo struct {
 	ClickType       int    `json:"clickType"`
 	Url             string `json:"url"`
@@ -46,31 +44,29 @@ type ClickTypeInfo struct {
 }
 
 
-/**
-"pushTimeInfo": {
-        "offLine": 是否进离线消息(0 否 1 是[validTime]) 【int 非必填，默认值为1】
-        "validTime": 有效时长 (1到72 小时内的正整数) 【int offLine值为1时，必填，默认24】
-    }
-*/
+
+//"pushTimeInfo": {
+//        "offLine": 是否进离线消息(0 否 1 是[validTime]) 【int 非必填，默认值为1】
+//        "validTime": 有效时长 (1到72 小时内的正整数) 【int offLine值为1时，必填，默认24】
+//    }
 type PushTimeInfo struct {
 	OffLine   int `json:"offLine"`
 	ValidTime int `json:"validTime"`
 }
 
-/**
-"advanceInfo": {
-        "suspend":是否通知栏悬浮窗显示 (1 显示  0 不显示) 【int 非必填，默认1】
-        "clearNoticeBar":是否可清除通知栏 (1 可以  0 不可以) 【int 非必填，默认1】
-        "fixDisplay":是否定时展示 (1 是  0 否) 【int 非必填，默认0】
-        "fixStartDisplayTime": 定时展示开始时间(yyyy-MM-dd HH:mm:ss) 【str 非必填】
-        "fixEndDisplayTime ": 定时展示结束时间(yyyy-MM-dd HH:mm:ss) 【str 非必填】
-        "notificationType": {
-            "vibrate":  震动 (0关闭  1 开启) ,  【int 非必填，默认1】
-            "lights":   闪光 (0关闭  1 开启), 【int 非必填，默认1】
-            "sound":   声音 (0关闭  1 开启), 【int 非必填，默认1】
-        }
-    }
-*/
+
+//"advanceInfo": {
+//        "suspend":是否通知栏悬浮窗显示 (1 显示  0 不显示) 【int 非必填，默认1】
+//        "clearNoticeBar":是否可清除通知栏 (1 可以  0 不可以) 【int 非必填，默认1】
+//        "fixDisplay":是否定时展示 (1 是  0 否) 【int 非必填，默认0】
+//        "fixStartDisplayTime": 定时展示开始时间(yyyy-MM-dd HH:mm:ss) 【str 非必填】
+//        "fixEndDisplayTime ": 定时展示结束时间(yyyy-MM-dd HH:mm:ss) 【str 非必填】
+//        "notificationType": {
+//            "vibrate":  震动 (0关闭  1 开启) ,  【int 非必填，默认1】
+//            "lights":   闪光 (0关闭  1 开启), 【int 非必填，默认1】
+//            "sound":   声音 (0关闭  1 开启), 【int 非必填，默认1】
+//        }
+//    }
 type AdvanceInfo struct {
 	Suspend             int              `json:"suspend"`
 	ClearNoticeBar      int              `json:"clearNoticeBar"`

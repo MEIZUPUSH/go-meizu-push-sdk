@@ -44,7 +44,11 @@ func TestGetRegisterSwitch(t *testing.T) {
 
 ## PushMessageService
 
-
+* API 列表
+```
+    func PushNotificationMessageByPushId(appId string, pushIds string, messageJson string, appKey string) PushResponse
+    func PushThroughMessageByPushId(appId string, pushIds string, messageJson string, appKey string) PushResponse
+```
 
 **NOTE:**  详情请参考[meizu-push-godoc](https://godoc.org/github.com/comsince/go-meizu-push-sdk)
 

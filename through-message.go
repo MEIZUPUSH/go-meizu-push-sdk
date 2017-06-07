@@ -3,22 +3,19 @@ package goPushSdk
 import "encoding/json"
 
 
-/**
+//{
+//    "title": 推送标题,
+//    "content": 推送内容, json 格式
+//    "pushTimeInfo": {
+//        "offLine": 是否进离线消息 0 否 1 是[validTime]
+//        "validTime": 有效时长 (0- 72 小时内的正整数)
+//    }
+//    "advanceInfo": {
+//        "fixSpeed": 是否定速推送 0 否  1 是 (fixSpeedRate 定速速率)
+//        "fixSpeedRate": 定速速率
+//    }
+//}
 
-{
-    "title": 推送标题,
-    "content": 推送内容, json 格式
-    "pushTimeInfo": {
-        "offLine": 是否进离线消息 0 否 1 是[validTime]
-        "validTime": 有效时长 (0- 72 小时内的正整数)
-    }
-    "advanceInfo": {
-        "fixSpeed": 是否定速推送 0 否  1 是 (fixSpeedRate 定速速率)
-        "fixSpeedRate": 定速速率
-    }
-}
-
-*/
 //这里所有的字段都是头字母大写
 type ThroughMessage struct {
 	Title string `json:"title"`
