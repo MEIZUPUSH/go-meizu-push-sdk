@@ -41,6 +41,11 @@ func TestGetRegisterSwitch(t *testing.T) {
 
 ```
 
+
+## PushMessageService
+
+
+
 **NOTE:**  详情请参考[meizu-push-godoc](https://godoc.org/github.com/comsince/go-meizu-push-sdk)
 
 
