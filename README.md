@@ -6,22 +6,8 @@
    go get github.com/comsince/go-meizu-push-sdk
 ```
 
-## QuickStart
 
-* 获取订阅开关状态
-
-```go
-func TestGetRegisterSwitch(t *testing.T) {
-	message := GetRegisterSwitch(APP_ID,PUSH_ID,APP_KEY)
-	fmt.Println("current message "+message.message)
-	if(message.code != 200){
-		t.Error("Status Code not 200")
-	}
-}
-
-```
-
-## ServerRegisterService
+## 订阅相关接口
 
 * API 列表
 
@@ -40,14 +26,64 @@ func TestGetRegisterSwitch(t *testing.T) {
     func UnSubscribeTags(appId string, pushId string, tags string, appKey string) PushResponse
 
 ```
+**NOTE:** 以test单元测试的方法说明其中一种api的使用方式
 
+* 获取订阅开关状态
 
-## PushMessageService
+```go
+func TestGetRegisterSwitch(t *testing.T) {
+	message := GetRegisterSwitch(APP_ID,PUSH_ID,APP_KEY)
+	fmt.Println("current message "+message.message)
+	if(message.code != 200){
+		t.Error("Status Code not 200")
+	}
+}
+
+```
+
+## 推送相关接口
 
 * API 列表
+
 ```
     func PushNotificationMessageByPushId(appId string, pushIds string, messageJson string, appKey string) PushResponse
     func PushThroughMessageByPushId(appId string, pushIds string, messageJson string, appKey string) PushResponse
+```
+**NOTE:** 以test单元测试的方法说明其中一种api的使用方式
+
+* 推送透传消息
+
+```go
+func TestPushThroughMessageByPushId(t *testing.T) {
+	messageJson := `{"test_throught_message": "message"}`
+	message := PushThroughMessageByPushId(APP_ID,PUSH_ID,buildThroughMessage(messageJson),APP_KEY)
+
+	fmt.Println("TestPushThroughMessageByPushId ",message.message)
+
+	if message.code != 200 {
+		t.Error("Status Code not 200")
+	}
+}    
+```
+
+* 推送通知栏消息
+
+```go
+func TestPushNotificationMessageByPushId(t *testing.T) {
+    //使用通知栏构建工具方法快速构建通知栏json
+	json := BuildNotificationMessage().
+		noticeBarType(2).
+		noticeTitle("标题go").
+		noticeContent("测试内容").toJson()
+	message := PushNotificationMessageByPushId(APP_ID,PUSH_ID,json,APP_KEY)
+
+	fmt.Println("TestPushNotificationMessageByPushId ",message.message)
+
+	if message.code != 200 {
+		t.Error("Status Code not 200")
+	}
+
+}
 ```
 
 **NOTE:**  详情请参考[meizu-push-godoc](https://godoc.org/github.com/comsince/go-meizu-push-sdk)

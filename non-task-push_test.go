@@ -19,7 +19,7 @@ func TestPushThroughMessageByPushId(t *testing.T) {
 func TestPushNotificationMessageByPushId(t *testing.T) {
 	json := BuildNotificationMessage().
 		noticeBarType(2).
-		noticeTitle("标题").
+		noticeTitle("标题go").
 		noticeContent("测试内容").toJson()
 	message := PushNotificationMessageByPushId(APP_ID,PUSH_ID,json,APP_KEY)
 
