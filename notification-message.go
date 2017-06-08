@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 )
 
-
 //"noticeBarInfo": {
 //     "noticeBarType": 通知栏样式(0, "标准"),(2, "安卓原生")【int 非必填，值为0】
 //     "title": 推送标题, 【string 必填，字数限制1~32字符】
@@ -16,7 +15,6 @@ type NoticeBarInfo struct {
 	Content       string `json:"content"`
 }
 
-
 //"noticeExpandInfo": {
 //        "noticeExpandType": 展开方式 (0, "标准"),(1, "文本")【int 非必填，值为0、1】
 //        "noticeExpandContent": 展开内容, 【string noticeExpandType为文本时，必填】
@@ -27,7 +25,6 @@ type NoticeExpandInfo struct {
 	NoticeExpandContent string `json:"noticeExpandContent"`
 }
 
-
 //"clickTypeInfo": {
 //        "clickType": 点击动作 (0,"打开应用"),(1,"打开应用页面"),(2,"打开URI页面"),(3, "应用客户端自定义")【int 非必填,默认为0】
 //        "url": URI页面地址, 【string clickType为打开URI页面时，必填, 长度限制1000字节】
@@ -36,14 +33,12 @@ type NoticeExpandInfo struct {
 //        "customAttribute":应用客户端自定义【string clickType为应用客户端自定义时，必填， 输入长度为1000字节以内】
 //    }
 type ClickTypeInfo struct {
-	ClickType       int    `json:"clickType"`
-	Url             string `json:"url"`
+	ClickType       int                    `json:"clickType"`
+	Url             string                 `json:"url"`
 	Parameters      map[string]interface{} `json:"parameters"`
-	Activity        string `json:"activity"`
-	CustomAttribute string `json:"customAttribute"`
+	Activity        string                 `json:"activity"`
+	CustomAttribute string                 `json:"customAttribute"`
 }
-
-
 
 //"pushTimeInfo": {
 //        "offLine": 是否进离线消息(0 否 1 是[validTime]) 【int 非必填，默认值为1】
@@ -53,7 +48,6 @@ type PushTimeInfo struct {
 	OffLine   int `json:"offLine"`
 	ValidTime int `json:"validTime"`
 }
-
 
 //"advanceInfo": {
 //        "suspend":是否通知栏悬浮窗显示 (1 显示  0 不显示) 【int 非必填，默认1】
@@ -94,7 +88,7 @@ func BuildNotificationMessage() NotificationMessage {
 	var notification NotificationMessage
 	notification.NoticeBarInfo = NoticeBarInfo{2, "", ""}
 	notification.NoticeExpandInfo = NoticeExpandInfo{0, ""}
-	clickParameterMap := map[string]interface{}{"test":"test"}
+	clickParameterMap := map[string]interface{}{"test": "test"}
 	notification.ClickTypeInfo = ClickTypeInfo{0, "", clickParameterMap, "", ""}
 	notification.PushTimeInfo = PushTimeInfo{0, 24}
 	notificationType := NotificationType{1, 1, 1}
@@ -202,8 +196,8 @@ func (message NotificationMessage) sound(sound bool) NotificationMessage {
 	return message
 }
 
-func (message NotificationMessage) toJson() string{
-	j,err := json.Marshal(message)
+func (message NotificationMessage) toJson() string {
+	j, err := json.Marshal(message)
 	if err != nil {
 		return ""
 	}

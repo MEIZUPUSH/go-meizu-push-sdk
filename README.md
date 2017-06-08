@@ -1,8 +1,8 @@
 # go-meizu-push-sdk
-[![Build Status][travis-image]][travis] [![Coverage Status][coveralls-image]][coveralls]  [![License][license-image]][license]
+[![GoDoc Reference][go-doc-image]][go-doc] [![Build Status][travis-image]][travis] [![Coverage Status][coveralls-image]][coveralls] [![Go Report Card][go-report-image]][go-report] [![License][license-image]][license]
 
 ## Installation
-```
+``` 
    go get github.com/MEIZUPUSH/go-meizu-push-sdk
 ```
 
@@ -97,3 +97,10 @@ func TestPushNotificationMessageByPushId(t *testing.T) {
 
 [coveralls-image]: https://coveralls.io/repos/github/comsince/go-meizu-push-sdk/badge.svg?branch=master
 [coveralls]: https://coveralls.io/github/comsince/go-meizu-push-sdk?branch=master
+
+[go-doc-image]:https://godoc.org/github.com/mattn/go-sqlite3?status.svg
+[go-doc]:https://godoc.org/github.com/MEIZUPUSH/go-meizu-push-sdk
+
+
+[go-report-image]:https://goreportcard.com/badge/github.com/MEIZUPUSH/go-meizu-push-sdk
+[go-report]:https://goreportcard.com/report/github.com/MEIZUPUSH/go-meizu-push-sdk

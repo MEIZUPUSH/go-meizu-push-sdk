@@ -1,14 +1,13 @@
 package goPushSdk
 
 import (
-	"fmt"
-	"encoding/hex"
-	"github.com/ddliu/go-httpclient"
 	"bytes"
 	"crypto/md5"
+	"encoding/hex"
+	"fmt"
+	"github.com/ddliu/go-httpclient"
 	"sort"
 )
-
 
 const (
 	SERVER      = "https://api-push.meizu.com/garcia/api/client/"
@@ -21,7 +20,6 @@ type PushResponse struct {
 	code    int
 	message string
 }
-
 
 // md5 sign
 func GenerateSign(params map[string]string, appKey string) string {
@@ -38,7 +36,7 @@ func GenerateSign(params map[string]string, appKey string) string {
 			signStr += k + "=" + params[k]
 		}
 		signStr += appKey
-		fmt.Println("signStr ",signStr)
+		fmt.Println("signStr ", signStr)
 	}
 	return PushParamMD5(signStr)
 }
@@ -48,7 +46,6 @@ func PushParamMD5(paramstr string) string {
 	hasher.Write([]byte(paramstr))
 	return hex.EncodeToString(hasher.Sum(nil))
 }
-
 
 //resolve push response
 func ResolvePushResponse(res *httpclient.Response, err error) PushResponse {

@@ -2,7 +2,6 @@ package goPushSdk
 
 import "encoding/json"
 
-
 //{
 //    "title": 推送标题,
 //    "content": 推送内容, json 格式
@@ -18,30 +17,29 @@ import "encoding/json"
 
 //这里所有的字段都是头字母大写
 type ThroughMessage struct {
-	Title string `json:"title"`
-	Content string `json:"content"`
+	Title        string         `json:"title"`
+	Content      string         `json:"content"`
 	PushTimeInfo T_PushTimeInfo `json:"pushTimeInfo"`
-	AdvanceInfo T_AdvanceInfo `json:"advanceInfo"`
+	AdvanceInfo  T_AdvanceInfo  `json:"advanceInfo"`
 }
 
 type T_PushTimeInfo struct {
-	OffLine int `json:"offLine"`
+	OffLine   int `json:"offLine"`
 	ValidTime int `json:"validTime"`
 }
 
 type T_AdvanceInfo struct {
-	FixSpeed int `json:"fixSpeed"`
+	FixSpeed     int `json:"fixSpeed"`
 	FixSpeedRate int `json:"fixSpeedRate"`
 }
 
 // 构建透传消息,目前只开放content字段设置，其他的默认,throughMessage必须是json格式
-func buildThroughMessage(throughMessage string) string  {
+func buildThroughMessage(throughMessage string) string {
 	var message ThroughMessage
 	message.Title = "默认透传消息标题"
 	message.Content = throughMessage
-	message.PushTimeInfo = T_PushTimeInfo{OffLine:1,ValidTime:2}
-	message.AdvanceInfo = T_AdvanceInfo{FixSpeed:0,FixSpeedRate:0}
-	throughMessageJson,_ := json.Marshal(message)
+	message.PushTimeInfo = T_PushTimeInfo{OffLine: 1, ValidTime: 2}
+	message.AdvanceInfo = T_AdvanceInfo{FixSpeed: 0, FixSpeedRate: 0}
+	throughMessageJson, _ := json.Marshal(message)
 	return string(throughMessageJson)
 }
-

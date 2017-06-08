@@ -47,7 +47,6 @@ func TestSubscribeAlias(t *testing.T) {
 	}
 }
 
-
 func TestUnSubscribeAlias(t *testing.T) {
 	message := UnSubscribeAlias(APP_ID, PUSH_ID, APP_KEY)
 	printMessage(message.message)
@@ -56,7 +55,6 @@ func TestUnSubscribeAlias(t *testing.T) {
 	}
 }
 
-
 func TestGetSubAlias(t *testing.T) {
 	message := GetSubAlias(APP_ID, PUSH_ID, APP_KEY)
 	printMessage(message.message)
@@ -64,7 +62,6 @@ func TestGetSubAlias(t *testing.T) {
 		t.Error("Status Code not 200")
 	}
 }
-
 
 func TestSubscribeTags(t *testing.T) {
 	message := SubscribeTags(APP_ID, PUSH_ID, "go-push-tag1,go-push-tag2", APP_KEY)
@@ -82,21 +79,18 @@ func TestUnSubscribeTags(t *testing.T) {
 	}
 }
 
-
 func TestGetSubTags(t *testing.T) {
-	message := GetSubTags(APP_ID, PUSH_ID,APP_KEY)
+	message := GetSubTags(APP_ID, PUSH_ID, APP_KEY)
 	printMessage(message.message)
 	if message.code != 200 {
 		t.Error("Status Code not 200")
 	}
 }
-
 
 func TestUnSubAllTags(t *testing.T) {
-	message := UnSubAllTags(APP_ID, PUSH_ID,APP_KEY)
+	message := UnSubAllTags(APP_ID, PUSH_ID, APP_KEY)
 	printMessage(message.message)
 	if message.code != 200 {
 		t.Error("Status Code not 200")
 	}
 }
-

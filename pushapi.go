@@ -4,8 +4,6 @@ import (
 	"github.com/ddliu/go-httpclient"
 )
 
-
-
 //android 客户端订阅接口
 func Register(appId string, appKey string, deviceId string) PushResponse {
 	registerRequestMap := map[string]string{
@@ -18,7 +16,5 @@ func Register(appId string, appKey string, deviceId string) PushResponse {
 		"deviceId": deviceId,
 		"sign":     GenerateSign(registerRequestMap, appKey),
 	})
-	return ResolvePushResponse(res,err)
+	return ResolvePushResponse(res, err)
 }
-
-
