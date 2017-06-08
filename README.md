@@ -6,7 +6,6 @@
    go get github.com/MEIZUPUSH/go-meizu-push-sdk
 ```
 
-
 ## 订阅相关接口
 
 * API 列表
